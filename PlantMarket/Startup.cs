@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PlantMarket.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace PlantMarket
 {
@@ -26,6 +29,20 @@ namespace PlantMarket
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<PlantMarketContext>(options =>
+                options.UseSqlServer(Configuration
+                    .GetSection("ConnectionStrings")
+                        .GetValue<string>("DefaultDbConnection")));
+
+            services.RegisterDependency();
+
+            services
+                .AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

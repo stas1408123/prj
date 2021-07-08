@@ -1,0 +1,15 @@
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\bin\Debug\net5.0\PlantMarket.Infrastructure.deps.json
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\bin\Debug\net5.0\PlantMarket.Infrastructure.dll
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\bin\Debug\net5.0\ref\PlantMarket.Infrastructure.dll
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\bin\Debug\net5.0\PlantMarket.Infrastructure.pdb
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\bin\Debug\net5.0\PlantMarket.Common.dll
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\bin\Debug\net5.0\PlantMarket.Common.pdb
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.csprojAssemblyReference.cache
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.AssemblyInfo.cs
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.csproj.CopyComplete
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.dll
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\ref\PlantMarket.Infrastructure.dll
+C:\Users\stas1\OneDrive\Рабочий стол\git\prj\PlantMarket.Infrastructure\obj\Debug\net5.0\PlantMarket.Infrastructure.pdb
