@@ -13,19 +13,19 @@ namespace PlantMarket.Controllers
     [ApiController]
     public class PlantController : Controller
     {
-        private readonly IPlantService _productService;
+        private readonly IPlantService _plantService;
 
 
-        public PlantController(IPlantService productService)
+        public PlantController(IPlantService plantService)
         {
-            _productService = productService;
+            _plantService = plantService;
         }
 
         [HttpGet]
         [Route("GetAllProducts")]
         public async Task<ActionResult<List<Plant>>> GetAllProducts()
         {
-            var products = await _productService
+            var products = await _plantService
                 .GetAllAsync();
 
             if (products is null)
@@ -35,80 +35,144 @@ namespace PlantMarket.Controllers
 
             return Ok(products);
         }
-/*
-        // GET: PlantController
-        public ActionResult Index()
+
+
+        [HttpGet]
+        [Route("GetPlant")]
+        public async Task<ActionResult<Plant>> GetPlantById(int id)
         {
-            return View();
+            var plant = await _plantService
+                .GetPlantByIdAsync(id);
+
+            if(plant==null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(plant);
         }
 
-        // GET: PlantController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: PlantController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: PlantController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult<Plant>> AddPlant([FromBody] Plant newPlant)
         {
-            try
+            var plant = await _plantService
+                .AddPlantAsync(newPlant);
+
+            if(plant == null)
             {
-                return RedirectToAction(nameof(Index));
+                return BadRequest();
             }
-            catch
-            {
-                return View();
-            }
+
+            return Ok(plant);
         }
 
-        // GET: PlantController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPut]
+        public async Task<ActionResult<Plant>> UpdatePlant([FromBody] Plant newPlant)
         {
-            return View();
+            var plant = await _plantService
+                .UpdateAsync(newPlant);
+
+            if(plant ==null)
+            {
+                return BadRequest(0);
+            }
+
+            return Ok(plant);
         }
 
-        // POST: PlantController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        
+        [HttpDelete]
+        public async Task<ActionResult<Plant>> DeletPlant(int id)
         {
-            try
+            var plant = await _plantService
+                .DeleteAsync(id);
+
+            if(plant == false)
             {
-                return RedirectToAction(nameof(Index));
+                return BadRequest();
             }
-            catch
-            {
-                return View();
-            }
+
+            return Ok(plant);
+
         }
 
-        // GET: PlantController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: PlantController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
-    }
+
+
+    /*
+     // GET: PlantController
+     public ActionResult Index()
+     {
+         return View();
+     }
+
+     // GET: PlantController/Details/5
+     public ActionResult Details(int id)
+     {
+         return View();
+     }
+
+     // GET: PlantController/Create
+     public ActionResult Create()
+     {
+         return View();
+     }
+
+     // POST: PlantController/Create
+     [HttpPost]
+     [ValidateAntiForgeryToken]
+     public ActionResult Create(IFormCollection collection)
+     {
+         try
+         {
+             return RedirectToAction(nameof(Index));
+         }
+         catch
+         {
+             return View();
+         }
+     }
+
+     // GET: PlantController/Edit/5
+     public ActionResult Edit(int id)
+     {
+         return View();
+     }
+
+     // POST: PlantController/Edit/5
+     [HttpPost]
+     [ValidateAntiForgeryToken]
+     public ActionResult Edit(int id, IFormCollection collection)
+     {
+         try
+         {
+             return RedirectToAction(nameof(Index));
+         }
+         catch
+         {
+             return View();
+         }
+     }
+
+     // GET: PlantController/Delete/5
+     public ActionResult Delete(int id)
+     {
+         return View();
+     }
+
+     // POST: PlantController/Delete/5
+     [HttpPost]
+     [ValidateAntiForgeryToken]
+     public ActionResult Delete(int id, IFormCollection collection)
+     {
+         try
+         {
+             return RedirectToAction(nameof(Index));
+         }
+         catch
+         {
+             return View();
+         }
+     }*/
+}
 }

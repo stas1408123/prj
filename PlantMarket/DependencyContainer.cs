@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PlantMarket.Infrastructure.Services.CategoryService;
 using PlantMarket.Infrastructure.Services.PlantService;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace PlantMarket
         {
 
             services.AddTransient<IPlantService, PlantService>();
+            services.AddTransient<ICategoryService, CategoryService>();
 
         }
     }

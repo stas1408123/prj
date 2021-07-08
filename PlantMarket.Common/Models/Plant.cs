@@ -27,7 +27,7 @@ namespace PlantMarket.Common.Models
         public bool IsFavourite { get; set; }
         public bool IsAvailable { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
