@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "LLHuYwRl8ZT8eVBWTXbM51Hrc+0m8L5BHOSILBzFrfDjoDaHjFs+pkTvbxP1+u2TYuo0IQ9EPIG3kjPZmH68Ow==",
+  "dgSpecHash": "XlKW2dmiKiEWXRQxoCFjV/kqRTKSIDP6DmOqFwYVZ9Yr/undNotr4+Wj1ajFlmBZwMhqSDYeciZze+WxZYfg7Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\stas1\\OneDrive\\Рабочий стол\\git\\prj\\PlantMarket.Common\\PlantMarket.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.7\\microsoft.aspnetcore.jsonpatch.5.0.7.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.7\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.7.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\5.0.8\\microsoft.aspnetcore.spaservices.extensions.5.0.8.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
   ],

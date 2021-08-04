@@ -17,8 +17,6 @@ namespace PlantMarket.Infrastructure.Services.CategoryService
 
         Task<bool> DeleteAsync(int categoryId);
 
-        Task<List<Plant>> GetAllPalantInCategory(Category category);
-
 
     }
 }

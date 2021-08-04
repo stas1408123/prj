@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using PlantMarket.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace PlantMarket
 {
@@ -25,6 +27,8 @@ namespace PlantMarket
         }
 
         public IConfiguration Configuration { get; }
+
+        private const string AngularClientName = "PlantMarketClient";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -44,35 +48,72 @@ namespace PlantMarket
                     options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
                 });
 
-            services.AddControllers();
+            services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = $"{AngularClientName}/dist";
+            });
+
+
+            /*services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlantMarket", Version = "v1" });
-            });
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlantMarket v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c =>c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlantMarket v1"));
             }
 
             app.UseHttpsRedirection();
 
+            app.UseDefaultFiles();
+
+            app.UseStaticFiles();
+
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints
+                .MapDefaultControllerRoute();
+            })
+            .UseSpa(spa =>
+            {
+                spa.Options.SourcePath = $"{AngularClientName}";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
             });
 
-            
+
+            /*using (var scope = app.ApplicationServices.CreateScope())
+            {
+                PlantMarketContext content = scope.ServiceProvider.GetRequiredService<PlantMarketContext>();
+                PlantMarket.Infrastructure.Data.DbObject.Initial(content);
+                content.SaveChanges();
+            }*/
+
+
         }
     }
 }

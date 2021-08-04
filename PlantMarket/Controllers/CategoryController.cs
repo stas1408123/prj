@@ -78,23 +78,7 @@ namespace PlantMarket.Controllers
 
         }
 
-        [HttpPost]
-        [Route("GetAllPalantInCategory")]
-        public async Task<ActionResult<List<Plant>>> GetPlantInCategory([FromBody] Category category)
-        {
-
-            var plants = await _categoryService
-                .GetAllPalantInCategory(category);
-
-            if(plants == null)
-            {
-                return BadRequest();
-            }
-
-            return Ok(plants.ToList());
-
-
-    }
+        
     }
 
     

@@ -13,8 +13,13 @@ namespace PlantMarket.Infrastructure.Data
         public PlantMarketContext(DbContextOptions<PlantMarketContext> options)
             : base(options)
         {
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
+
+        public DbSet<ShopCartItem> ShopCarItem { get; set; }
+
+        public DbSet<ShopCart> ShopCarts { get; set; }
 
         public DbSet<Plant> Plants { get; set; }
 
@@ -22,7 +27,12 @@ namespace PlantMarket.Infrastructure.Data
 
         public DbSet<Order> Orders { get; set; }
 
+        public DbSet<OrderedPlant> OrderedPlant { get; set; }
+
         public DbSet<User> Users { get; set; }
+
+        public DbSet<AccessData> AccessDatas { get; set; }
+   
 
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

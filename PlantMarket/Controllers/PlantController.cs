@@ -15,7 +15,6 @@ namespace PlantMarket.Controllers
     {
         private readonly IPlantService _plantService;
 
-
         public PlantController(IPlantService plantService)
         {
             _plantService = plantService;
@@ -36,6 +35,20 @@ namespace PlantMarket.Controllers
             return Ok(products);
         }
 
+        [HttpGet]
+        [Route("GetFavPlants")]
+        public async Task<ActionResult<Plant>> GetFavPlants()
+        {
+            var products = await _plantService
+                .GetAllAsync();
+
+            if (products is null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(products);
+        }
 
         [HttpGet]
         [Route("GetPlant")]
@@ -44,7 +57,7 @@ namespace PlantMarket.Controllers
             var plant = await _plantService
                 .GetPlantByIdAsync(id);
 
-            if(plant==null)
+            if (plant == null)
             {
                 return BadRequest();
             }
@@ -82,7 +95,7 @@ namespace PlantMarket.Controllers
 
         
         [HttpDelete]
-        public async Task<ActionResult<Plant>> DeletPlant(int id)
+        public async Task<ActionResult<bool>> DeletPlant(int id)
         {
             var plant = await _plantService
                 .DeleteAsync(id);
@@ -96,83 +109,31 @@ namespace PlantMarket.Controllers
 
         }
 
+        [HttpPost]
+        [Route("GetAllPalantInCategory")]
+        public async Task<ActionResult<List<Plant>>> GetPlantInCategory([FromBody] Category category)
+        {
 
+            var plants = await _plantService
+                .GetAllPalantInCategory(category);
 
+            if (plants == null)
+            {
+                return BadRequest();
+            }
 
-    /*
-     // GET: PlantController
-     public ActionResult Index()
-     {
-         return View();
-     }
+            return Ok(plants.ToList());
+        }
 
-     // GET: PlantController/Details/5
-     public ActionResult Details(int id)
-     {
-         return View();
-     }
+        [HttpGet]
+        [Route("Search")]
+        public async Task<ActionResult<List<Plant>>> Search(string name)
+        {
+            var plant = await _plantService
+                .Search(name);
 
-     // GET: PlantController/Create
-     public ActionResult Create()
-     {
-         return View();
-     }
+            return Ok(plant);
+        }
 
-     // POST: PlantController/Create
-     [HttpPost]
-     [ValidateAntiForgeryToken]
-     public ActionResult Create(IFormCollection collection)
-     {
-         try
-         {
-             return RedirectToAction(nameof(Index));
-         }
-         catch
-         {
-             return View();
-         }
-     }
-
-     // GET: PlantController/Edit/5
-     public ActionResult Edit(int id)
-     {
-         return View();
-     }
-
-     // POST: PlantController/Edit/5
-     [HttpPost]
-     [ValidateAntiForgeryToken]
-     public ActionResult Edit(int id, IFormCollection collection)
-     {
-         try
-         {
-             return RedirectToAction(nameof(Index));
-         }
-         catch
-         {
-             return View();
-         }
-     }
-
-     // GET: PlantController/Delete/5
-     public ActionResult Delete(int id)
-     {
-         return View();
-     }
-
-     // POST: PlantController/Delete/5
-     [HttpPost]
-     [ValidateAntiForgeryToken]
-     public ActionResult Delete(int id, IFormCollection collection)
-     {
-         try
-         {
-             return RedirectToAction(nameof(Index));
-         }
-         catch
-         {
-             return View();
-         }
-     }*/
-}
+    }
 }

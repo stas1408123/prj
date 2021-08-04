@@ -20,5 +20,9 @@ namespace PlantMarket.Infrastructure.Services.PlantService
         Task<Plant> UpdateAsync(Plant plant);
 
         Task<bool> DeleteAsync(int plantId);
+
+        Task<List<Plant>> GetAllPalantInCategory(Category category);
+
+        Task<List<Plant>> Search(string name);
     }
 }

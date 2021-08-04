@@ -12,6 +12,32 @@ namespace PlantMarket.Infrastructure.Data
         public static void Initial(PlantMarketContext content)
         {
 
+           
+
+            if (!content.Users.Any())
+                content.Users.AddRange
+                    (
+                    new User
+                    {
+                        Name = "Вася",
+                        SerName = "Петров",
+                        Adress = "Улица Первомайская",
+                        Email = "asdf@mail.ru",
+                        Phone = "85225852",
+                        Orders= null,
+                    },
+                    new User
+                    {
+                        Name = "Ваня",
+                        SerName = "Иванов",
+                        Adress = "Улица Пушкина",
+                        Email = "lkjhg@mail.ru",
+                        Phone = "8520",
+                        Orders=null,
+                    }
+                    ) ;
+            content.SaveChanges();
+
             if (!content.Categories.Any())
                 content.Categories.AddRange(Categories.Select(c => c.Value));
 
@@ -24,7 +50,6 @@ namespace PlantMarket.Infrastructure.Data
                         LongDescription = "Самая вкусная ягодка",
                         IsFavourite = false,
                         IsAvailable = true,
-                        //PictureLink = "/img/klub.jpg",
                         Price = 5,
                         Category = Categories["Огород"]
                     },
@@ -34,8 +59,7 @@ namespace PlantMarket.Infrastructure.Data
                         ShortDescription = "Меьше клубники,но не менее вкусная",
                         LongDescription = "",
                         IsFavourite = false,
-                        IsAvailable = true,
-                        //PictureLink = "/img/zeml.jpg",
+                        IsAvailable = true,       
                         Price = 10,
                         Category = Categories["Огород"]
                     },
@@ -46,7 +70,6 @@ namespace PlantMarket.Infrastructure.Data
                         LongDescription = "Самая вкусная ягодка",
                         IsFavourite = false,
                         IsAvailable = true,
-                        //PictureLink = "/img/chernika.jpg",
                         Price = 20,
                         Category = Categories["Огород"]
                     },
@@ -57,7 +80,6 @@ namespace PlantMarket.Infrastructure.Data
                         LongDescription = "Почувствуй настроение лета",
                         IsFavourite = true,
                         IsAvailable = true,
-                        //PictureLink = "/img/magnoliya.jpg",
                         Price = 300,
                         Category = Categories["Сад"]
                     },
@@ -68,7 +90,6 @@ namespace PlantMarket.Infrastructure.Data
                         LongDescription = "Почувствуй настроение лета",
                         IsFavourite = true,
                         IsAvailable = true,
-                        //PictureLink = "/img/lavanda.jpg",
                         Price = 150,
                         Category = Categories["Сад"]
                     },
@@ -79,13 +100,36 @@ namespace PlantMarket.Infrastructure.Data
                         LongDescription = "Почувствуй настроение лета",
                         IsFavourite = true,
                         IsAvailable = true,
-                        //PictureLink = "/img/gortenziya.jpg",
                         Price = 200,
                         Category = Categories["Сад"]
                     }
                     );
-
+            
             content.SaveChanges();
+
+            if (!content.Orders.Any())
+                content.Orders.AddRange(
+                    new Order 
+                    { 
+                        Name="xzdcfg",
+                        SerName="zxcvb",
+                        Adress="xcvgfh",
+                        Phone="vbbn",
+                        Email="xzcvb",
+                        UserId=1,
+                    },
+                    new Order
+                    {
+                        Name = "xzdcfg",
+                        SerName = "zxcvb",
+                        Adress = "xcvgfh",
+                        Phone = "852",
+                        Email = "xzcvb",
+                        UserId = 2,
+                    }
+                    );
+
+            
         }
 
         private static Dictionary<string, Category> category;

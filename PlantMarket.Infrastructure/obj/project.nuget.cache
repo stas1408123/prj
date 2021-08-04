@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "jH8ZEPAlUbfg9arjilAR8F3MpnY7kNQdpTShjLeKWwYBa4u24bQPlsUzwgaAJLre/Coa0BupwN05tU025dWDWg==",
+  "dgSpecHash": "8qg4bioxFFp3i9tv9z0jNV1WOYA9I6Md4l/jdPovtkuNEPq1/FkN7Gn+PRcAI2J3KYgOBNsl3qCV5D2Bk/3ZGQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\stas1\\OneDrive\\Рабочий стол\\git\\prj\\PlantMarket.Infrastructure\\PlantMarket.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.7\\microsoft.aspnetcore.jsonpatch.5.0.7.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.7\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.7.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\5.0.8\\microsoft.aspnetcore.spaservices.extensions.5.0.8.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -19,6 +20,9 @@
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
+    "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\stas1\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",

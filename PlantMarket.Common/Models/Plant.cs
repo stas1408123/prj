@@ -32,5 +32,7 @@ namespace PlantMarket.Common.Models
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
+        //public List<Order> Orders { get; set; }
+
     }
 }

@@ -31,8 +31,7 @@ namespace PlantMarket.Common.Models
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
-        
 
-        public List<Plant> Plants { get; set; }
+        public List<OrderedPlant> OrderedPlants { get; set; }
     }
 }

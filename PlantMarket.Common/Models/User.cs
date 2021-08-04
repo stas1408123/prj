@@ -24,6 +24,8 @@ namespace PlantMarket.Common.Models
         [Required]
         public string Email { get; set; }
 
+        public ShopCart shopCart { get; set; }
+
         public virtual List<Order> Orders { get; set; }
     }
 }
