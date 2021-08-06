@@ -12,6 +12,8 @@ export class PlantService {
   private url ='/api/Plant/';
 
   public selectedCategory:Subject<Category> =new Subject<Category>()
+
+  public selectedPlants:Subject<Plant[]> =new Subject<Plant[]>() 
   
   constructor(public http: HttpClient) { }
 
@@ -24,7 +26,7 @@ export class PlantService {
     return this.http.get<Plant>(`${this.url}GetPlant/?id=${id}`)
   }
 
-  Search(name : string):Observable<Plant[]>{
+  search(name : string):Observable<Plant[]>{
     return this.http.get<Plant[]>(`${this.url}Search/?name=${name}`)
   }
 

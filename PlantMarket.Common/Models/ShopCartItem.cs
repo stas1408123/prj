@@ -12,11 +12,13 @@ namespace PlantMarket.Common.Models
 
         [Key]
         public int Id { get; set; }
+
         public virtual Plant Plant { get; set; }
 
         public int PlantId { get; set; }
 
         public virtual ShopCart ShopCart { get; set; }
+
         public int ShopCartId { get; set; }
     }
 }

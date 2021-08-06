@@ -19,7 +19,7 @@ export class ListOfPlantsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.plantService.getAllPlants().subscribe(result => {
+    this.plantService.getFavPlants().subscribe(result => {
       this.plants=result
     },
       error => {
@@ -28,12 +28,16 @@ export class ListOfPlantsComponent implements OnInit {
 
     this.plantService.selectedCategory.subscribe((result) =>{
       if(result){
-        console.log(result)
         this.plantService.getAllPalantInCategory(result).subscribe(result=>{
           this.plants=result;
         })
       }
     })   
+    this.plantService.selectedPlants.subscribe((result) =>{
+      if(result){
+        this.plants=result;
+        }
+    })  
     
   }
 

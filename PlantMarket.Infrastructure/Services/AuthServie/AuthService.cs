@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PlantMarket.Infrastructure.Services.UserService;
 using PlantMarket.Infrastructure.Services.ShopCartService;
+using Microsoft.Extensions.Logging;
+using PlantMarket.Common;
 
 namespace PlantMarket.Infrastructure.Services.AuthServie
 {
@@ -21,42 +23,68 @@ namespace PlantMarket.Infrastructure.Services.AuthServie
 
         private readonly IShopCartService _shopCartService1;
 
-        public AuthService(PlantMarketContext plantMarketContext, IUserService userService, IShopCartService shopCartService)
+        private readonly ILogger<AuthService> _logger;
+
+        public AuthService(PlantMarketContext plantMarketContext,
+            IUserService userService,
+            IShopCartService shopCartService,
+            ILogger<AuthService> logger)
         {
             _plantMarketContext = plantMarketContext;
             _userService = userService;
             _shopCartService1 = shopCartService;
+            _logger = logger;
 
         }
 
         public async Task<bool> IsLoginFree(string login)
         {
-            string hashedLogin = GetHashedValue(login);
-
-
-            var users = await _plantMarketContext.AccessDatas
-                    .ToListAsync();
-
-            var accessData = users
-                .FirstOrDefault(user => AreHashStringEquals(user.Login, hashedLogin));
-
-
-            if (accessData == null)
+            if (string.IsNullOrEmpty(login) || string.IsNullOrWhiteSpace(login))
             {
-                return true;
+                return false;
+
             }
 
-            return false;
+            try
+            {
+                string hashedLogin = GetHashedValue(login);
+
+                var users = await _plantMarketContext.AccessDatas
+                        .ToListAsync();
+
+                var accessData = users
+                    .FirstOrDefault(user => AreHashStringEquals(user.Login, hashedLogin));
+
+                if (accessData == null)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogErrorByTemplate(
+                    nameof(AuthServie),
+                    nameof(IsLoginFree),
+                    $"Failed checked login",
+                    ex);
+
+                return false;
+            }
 
 
         }
 
         public async Task<User> LogIn(string login, string password)
         {
+            try
+            {
+
                 string hashedLogin = GetHashedValue(login);
 
                 var accessData = _plantMarketContext.AccessDatas
-                    .AsEnumerable()         // ??
+                    .AsEnumerable()
                     .FirstOrDefault(data => AreHashStringEquals(data.Login, hashedLogin));
 
                 if (accessData != null)
@@ -68,30 +96,53 @@ namespace PlantMarket.Infrastructure.Services.AuthServie
                         return await _userService.GetUserById(accessData.UserId);
                     }
                 }
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogErrorByTemplate(
+                    nameof(AuthServie),
+                    nameof(LogIn),
+                    $"Failed login",
+                    ex);
 
                 return null;
+            }
         }
 
         public async Task Register(string login, string password, User user)
         {
-            string hashedLogin = GetHashedValue(login);
-
-            string hashedPassword = GetHashedValue(password);
-
-            var accessData = new AccessData
+            try
             {
-                Login = hashedLogin,
-                Password = hashedPassword,
-                UserId = user.Id,
-                User = user
-            };
+                string hashedLogin = GetHashedValue(login);
 
-            await _plantMarketContext.AccessDatas
-                .AddAsync(accessData);
+                string hashedPassword = GetHashedValue(password);
 
-            await _shopCartService1.CreateShopCartAsync(user);
+                var accessData = new AccessData
+                {
+                    Login = hashedLogin,
+                    Password = hashedPassword,
+                    UserId = user.Id,
+                    User = user
+                };
 
-            await _plantMarketContext.SaveChangesAsync();
+                await _plantMarketContext.AccessDatas
+                    .AddAsync(accessData);
+
+                await _shopCartService1.CreateShopCartAsync(user);
+
+                await _plantMarketContext.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogErrorByTemplate(
+                    nameof(AuthServie),
+                    nameof(Register),
+                    $"Failed register",
+                    ex);
+            }
 
         }
 

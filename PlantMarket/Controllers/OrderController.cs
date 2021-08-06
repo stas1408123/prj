@@ -14,7 +14,7 @@ namespace PlantMarket.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        public readonly IOrderService _orderService;
+        private readonly IOrderService _orderService;
         private readonly IUserService _userService;
 
         public OrderController(IOrderService orderService, IUserService userService)

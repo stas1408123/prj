@@ -32,7 +32,7 @@
             </button>
         </mat-menu>
 
-        <button mat-button class='button' >
+        <button mat-button (click)='openAllProduct()' class='button' >
             Products
             <mat-icon>grass</mat-icon>
         </button> 
@@ -74,7 +74,7 @@
 
         <div *ngIf="isUserAuth; then thenBlock else elseBlock"></div>   
         <ng-template #thenBlock>
-            <p style="margin-left: auto;margin-right: 10px;">{{user.name}} {{user.serName}}</p>   
+            <p style="margin-left: auto;margin-right: 10px;" *ngIf='user'>{{user.name}} {{user.serName}}</p>   
         </ng-template>  
         <ng-template #elseBlock><button mat-flat-button class="button" routerLink='/login'>LogIn</button>
             <button mat-flat-button style="background-color:black; color: #fff;" routerLink='/register'>Sign-up</button>

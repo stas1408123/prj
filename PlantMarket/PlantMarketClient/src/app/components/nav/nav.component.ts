@@ -40,7 +40,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(result => {
-      if (result !== null) {
+      if (result) {
         this.user=result;
         this.isUserAuth=true;
       }
@@ -49,7 +49,7 @@ export class NavComponent implements OnInit {
 
     });
     this.categoryService.getAllCategories().subscribe(result =>{
-      if(result !==null){
+      if(result){
         this.categories=result;
       }
     },
@@ -111,7 +111,18 @@ export class NavComponent implements OnInit {
   }
 
   startSearch(){
-    //this.plantService.
+    this.plantService.search(this.search).subscribe(result =>
+      {
+        this.plantService.selectedPlants.next(result);
+      });
+    
+  }
+
+  openAllProduct(){
+    this.plantService.getAllPlants().subscribe(result =>
+      {
+        this.plantService.selectedPlants.next(result);
+      });
   }
 
   openOrders(){

@@ -104,16 +104,6 @@ namespace PlantMarket
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-
-
-            /*using (var scope = app.ApplicationServices.CreateScope())
-            {
-                PlantMarketContext content = scope.ServiceProvider.GetRequiredService<PlantMarketContext>();
-                PlantMarket.Infrastructure.Data.DbObject.Initial(content);
-                content.SaveChanges();
-            }*/
-
-
         }
     }
 }

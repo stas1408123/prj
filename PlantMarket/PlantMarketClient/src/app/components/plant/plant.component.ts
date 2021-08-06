@@ -45,14 +45,6 @@ export class PlantComponent implements OnInit {
   }
 
   setShopCartItem() : ShopCartItem{
-    /*this.shopCartItem = {
-      id: 0,
-
-      plant: this.plant,
-
-      plantId: this.plant.id
-
-    }*/
     return {
       id: 0,
 

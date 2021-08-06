@@ -32,24 +32,49 @@ namespace PlantMarket.Infrastructure.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<AccessData> AccessDatas { get; set; }
-   
 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Category>().HasData(
+                new Category[]
+                {
+                    new Category
+                    {
+                    Id = 1,
+                    Name = "Сад",
+                    Description = "Великолепные растения для вашего заднего участка"
+                    },
+                    new Category
+                    {
+                    Id = 2,
+                    Name = "Огород",
+                    Description = "Лучший выбор для вашего огорода"
+                    }
+                }
+                );
 
-            Category category1 = new Category
-            {
-                Id = 1,
-                Name = "Сад",
-                Description = "Великолепные растения для вашего заднего участка"
-            };
+            modelBuilder.Entity<User>()
+                .HasData(
+                new User
+                {
+                    Id = 1,
+                    Name = "admin",
+                    SerName = "admin",
+                    Email = "admin@admin.com",
+                    Adress = "asdvbn",
+                    Phone = "+375(29)00000000",
+                });
 
-            Category category2 = new Category
-            {
-                Id = 2,
-                Name = "Огород",
-                Description = "Лучший выбор для вашего огорода"
-            };
+            modelBuilder.Entity<AccessData>()
+                .HasData(
+                new AccessData
+                {
+                    Id = 1,
+                    Login = "21232F297A57A5A743894A0E4A801F",
+                    Password = "21232F297A57A5A743894A0E4A801F",
+                    UserId = 1
+                });
 
             modelBuilder.Entity<Plant>().HasData
                 (
@@ -61,7 +86,6 @@ namespace PlantMarket.Infrastructure.Data
                     LongDescription = "Самая вкусная ягодка",
                     IsFavourite = false,
                     IsAvailable = true,
-                    //PictureLink = "/img/klub.jpg",
                     Price = 5,
                     CategoryId = 1,
                 },
@@ -73,8 +97,6 @@ namespace PlantMarket.Infrastructure.Data
                     LongDescription = "",
                     IsFavourite = false,
                     IsAvailable = true,
-                    //PictureLink = "/img/zeml.jpg",
-                    Category = category1,
                     Price = 10,
                     CategoryId = 1,
                 },
@@ -86,8 +108,6 @@ namespace PlantMarket.Infrastructure.Data
                     LongDescription = "Самая вкусная ягодка",
                     IsFavourite = false,
                     IsAvailable = true,
-                    //PictureLink = "/img/chernika.jpg",
-                    Category = category1,
                     Price = 20,
                     CategoryId = 1,
                 },
@@ -99,8 +119,6 @@ namespace PlantMarket.Infrastructure.Data
                     LongDescription = "Почувствуй настроение лета",
                     IsFavourite = true,
                     IsAvailable = true,
-                    //PictureLink = "/img/magnoliya.jpg",
-                    Category = category2,
                     Price = 300,
                     CategoryId = 2,
                 },
@@ -112,8 +130,6 @@ namespace PlantMarket.Infrastructure.Data
                     LongDescription = "Почувствуй настроение лета",
                     IsFavourite = true,
                     IsAvailable = true,
-                    //PictureLink = "/img/lavanda.jpg",
-                    Category = category2,
                     Price = 150,
                     CategoryId = 2,
                 },
@@ -125,15 +141,13 @@ namespace PlantMarket.Infrastructure.Data
                     LongDescription = "Почувствуй настроение лета",
                     IsFavourite = true,
                     IsAvailable = true,
-                    //PictureLink = "/img/gortenziya.jpg",
                     Price = 200,
-                    Category = category2,
                     CategoryId = 2,
                 }
-                ); 
+                );
 
 
             base.OnModelCreating(modelBuilder);
-        }*/
+        }
     }
 }

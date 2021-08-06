@@ -87,7 +87,7 @@ namespace PlantMarket.Controllers
 
             if (!int.TryParse(userIdString, out int userId))
             {
-                return BadRequest();
+                return Ok();
             }
 
             var user = await _userService
