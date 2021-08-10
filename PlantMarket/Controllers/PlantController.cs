@@ -40,7 +40,7 @@ namespace PlantMarket.Controllers
         public async Task<ActionResult<Plant>> GetFavPlants()
         {
             var products = await _plantService
-                .GetAllAsync();
+                .GetFavPlants();
 
             if (products is null)
             {
@@ -66,6 +66,7 @@ namespace PlantMarket.Controllers
         }
 
         [HttpPost]
+        [Route("AddPlant")]
         public async Task<ActionResult<Plant>> AddPlant([FromBody] Plant newPlant)
         {
             var plant = await _plantService

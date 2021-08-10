@@ -1,4 +1,5 @@
 import { Order } from "./order";
+import { Role } from "./role";
 import { ShopCart } from "./shopCart";
 
 export interface User {
@@ -18,5 +19,7 @@ export interface User {
     shopCart?: ShopCart;
 
     orders: Order[];
+
+    role?: Role;
 
 }

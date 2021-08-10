@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { observable, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Category } from '../models/category';
 import { Plant } from '../models/plant';
 
@@ -31,7 +31,7 @@ export class PlantService {
   }
 
   addPlant(newPlant :Plant) : Observable<Plant>{
-    return this.http.post<Plant>(`${this.url}`,newPlant);
+    return this.http.post<Plant>(`${this.url}AddPlant`,newPlant);
   }
 
   deletePlantById(id:number) :Observable<boolean>{

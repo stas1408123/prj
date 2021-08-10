@@ -14,37 +14,40 @@ import { ShopCartItem } from 'src/app/models/shopCartItem';
 })
 export class PlantComponent implements OnInit {
 
-  @Input() plant!:Plant
+  @Input() plant!: Plant
 
 
 
-  constructor(    
+  constructor(
     private snackBar: MatSnackBar,
-    private plantService : PlantService,
-    private shopCartService:ShopCartService
-    ) { }
+    private plantService: PlantService,
+    private shopCartService: ShopCartService
+  ) { }
 
   ngOnInit(): void {
 
   }
 
-  addToCart(){
-    this.setShopCartItem();
+  addToCart() {
 
     this.shopCartService.addPlantToCart(this.setShopCartItem()).subscribe(result => {
       if (result) {
-        this.snackBar.open('Plant is added to the cart')
+        this.snackBar.open('Plant is added to the cart', '', {
+          duration: 2000,
+        })
       }
       else {
-        this.snackBar.open('Try again')
+        this.snackBar.open('Try again', '', {
+          duration: 2000,
+        })
       }
     }
 
-    )  
+    )
 
   }
 
-  setShopCartItem() : ShopCartItem{
+  setShopCartItem(): ShopCartItem {
     return {
       id: 0,
 

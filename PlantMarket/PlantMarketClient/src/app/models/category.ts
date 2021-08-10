@@ -9,6 +9,6 @@ export interface Category {
 
     description: string;
 
-    plants: Plant[];
+    plants?: Plant[];
 
 }

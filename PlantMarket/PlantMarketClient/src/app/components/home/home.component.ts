@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Plant } from 'src/app/models/plant';
 import { PlantService } from 'src/app/services/plant.service';
-import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'app-home',

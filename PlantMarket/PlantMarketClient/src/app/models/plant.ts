@@ -21,6 +21,6 @@ export interface Plant {
 
     categoryId: number;
 
-    category: Category;
+    category?: Category;
 
 }

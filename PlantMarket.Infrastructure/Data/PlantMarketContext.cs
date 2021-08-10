@@ -33,9 +33,12 @@ namespace PlantMarket.Infrastructure.Data
 
         public DbSet<AccessData> AccessDatas { get; set; }
 
+        public DbSet<Role> Roles { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Category>().HasData(
                 new Category[]
                 {
@@ -54,6 +57,24 @@ namespace PlantMarket.Infrastructure.Data
                 }
                 );
 
+
+            modelBuilder.Entity<Role>()
+                .HasData(
+                new Role[]
+                {
+                    new Role 
+                    {
+                        Id = 1, 
+                        Name = "admin" 
+                    },
+                    new Role
+                    {
+                    Id = 2,
+                    Name = "user"
+                    }
+                }
+                );
+
             modelBuilder.Entity<User>()
                 .HasData(
                 new User
@@ -64,6 +85,15 @@ namespace PlantMarket.Infrastructure.Data
                     Email = "admin@admin.com",
                     Adress = "asdvbn",
                     Phone = "+375(29)00000000",
+                    RoleId = 1,
+                });
+
+            modelBuilder.Entity<ShopCart>()
+                .HasData(
+                new ShopCart
+                {
+                    Id = 1,
+                    UserId=1
                 });
 
             modelBuilder.Entity<AccessData>()

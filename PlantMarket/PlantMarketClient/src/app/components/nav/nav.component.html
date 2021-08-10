@@ -10,6 +10,23 @@
             Home
             <mat-icon>home</mat-icon>
         </button>
+
+        <button mat-button class='button' [matMenuTriggerFor]="menuAdmin" *ngIf='user?.role?.name==="admin"'>
+            Admin
+            <mat-icon>admin_panel_settings</mat-icon>
+        </button> 
+
+        <mat-menu #menuAdmin="matMenu">
+            <button mat-menu-item (click)='openAddNewPlant()'>
+              <mat-icon>add</mat-icon>
+              Add new Plant
+            </button>
+            <button mat-menu-item (click)='openAddNewCategory()'>
+              <mat-icon>add</mat-icon>
+              Add new Category
+            </button>
+        </mat-menu>
+
         
         <button mat-button class='button' (click)='openShopCart()'>
             ShopCart

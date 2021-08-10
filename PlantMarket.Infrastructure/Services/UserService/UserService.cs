@@ -115,6 +115,7 @@ namespace PlantMarket.Infrastructure.Services.UserService
             try
             {
                 var user = await _plantMarketContext.Users
+                       .Include(user => user.Role)
                        .Include(user => user.Orders)
                            .ThenInclude(order => order.OrderedPlants)
                        .Include(user => user.shopCart)

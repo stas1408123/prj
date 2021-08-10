@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule} from '@angular/material/select';
 
 
 import { AppComponent } from './app.component';
@@ -30,6 +31,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { OrderComponent } from './components/order/order.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import { AddNewPlantComponent } from './components/admin-dialogd/add-new-plant/add-new-plant.component';
+import { CategoryService } from './services/category.service';
+import { AddNewCategoryComponent } from './components/admin-dialogd/add-new-category/add-new-category.component';
 //import { OrderService } from './services/order.service';
 
 
@@ -50,7 +54,9 @@ import {MatListModule} from '@angular/material/list';
     ShopcartComponent,
     HomeComponent,
     EditProfileComponent,
-    OrderComponent
+    OrderComponent,
+    AddNewPlantComponent,
+    AddNewCategoryComponent
   ],
   imports: [
     MatFormFieldModule,
@@ -63,7 +69,7 @@ import {MatListModule} from '@angular/material/list';
     MatDialogModule,
     MatExpansionModule,
     MatListModule,
-
+    MatSelectModule,
 
     BrowserModule,
     AppRoutingModule,
@@ -73,6 +79,7 @@ import {MatListModule} from '@angular/material/list';
   ],
   providers: [
     PlantService,
+    CategoryService,
     ShopCartService//,
     //OrderService
   ],
