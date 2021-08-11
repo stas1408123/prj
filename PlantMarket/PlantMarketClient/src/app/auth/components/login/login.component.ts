@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CheckAuthService } from 'src/app/services/check-auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { LoginData } from '../../models/login-data';
 import { AuthService } from '../../services/auth.service';
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private userService: UserService) { }
+    private userService: UserService,
+    private readonly checkAuthService:CheckAuthService) { }
 
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.LogIn(this.data).subscribe(result => {
       if (result) {
+        this.checkAuthService.changeisUserAuth(true);
         this.router.navigateByUrl('');
       }
       else {

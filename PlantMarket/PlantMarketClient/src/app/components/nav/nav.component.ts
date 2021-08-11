@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderComponent } from '../order/order.component';
 import { AddNewPlantComponent } from '../admin-dialogd/add-new-plant/add-new-plant.component';
 import { AddNewCategoryComponent } from '../admin-dialogd/add-new-category/add-new-category.component';
-import { identifierModuleUrl } from '@angular/compiler';
+import { CheckAuthService } from 'src/app/services/check-auth.service';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
 
   search: string = "";
   isUserAuth: boolean = false;
-  user!: User;
+  user?: User;
   categories!: Category[];
 
   constructor(
@@ -35,19 +35,17 @@ export class NavComponent implements OnInit {
     private categoryService: CategoryService,
     private plantService: PlantService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private readonly checkAuthService:CheckAuthService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(result => {
-      if (result) {
-        this.user = result;
-        this.isUserAuth = true;
-      }
-    },
-      error => {
 
-      });
+    this.checkAuthService.isUserAuth.subscribe((isUserAuth)=>{
+      this.isUserAuth = isUserAuth;
+      this.updateUserInfo();
+    })
+
     this.categoryService.getAllCategories().subscribe(result => {
       if (result) {
         this.categories = result;
@@ -57,6 +55,21 @@ export class NavComponent implements OnInit {
 
       }
     )
+  }
+
+  updateUserInfo(){
+    this.userService.getUser().subscribe(result => {
+      if (result) {
+        this.user = result;
+        this.checkAuthService.changeisUserAuth(true);
+      }
+      else{
+
+      }
+    },
+      error => {
+
+    });
   }
 
   goToHome() {
@@ -72,7 +85,8 @@ export class NavComponent implements OnInit {
   logOut() {
     this.authService.Logout().subscribe(result => {
       if (result) {
-        this.isUserAuth = false;
+        this.user=undefined;
+        this.checkAuthService.changeisUserAuth(false);
         this.router.navigateByUrl('');
       }
     },

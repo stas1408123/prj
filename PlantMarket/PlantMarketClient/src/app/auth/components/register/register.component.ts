@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CheckAuthService } from 'src/app/services/check-auth.service';
 
 @Component({
   selector: 'app-register',
@@ -37,10 +38,12 @@ export class RegisterComponent implements OnInit {
 
   isLoginFree: boolean = false;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private auth: AuthService,
     private userService: UserService,
     private snackBar: MatSnackBar,
+    private readonly checkAuthService:CheckAuthService
   ) { }
 
   ngOnInit(): void {
@@ -74,6 +77,7 @@ export class RegisterComponent implements OnInit {
     if (this.isLoginFree) {
       this.auth.Register(this.data).subscribe(result => {                                          
         if (result) {
+          this.checkAuthService.changeisUserAuth(true);
           this.router.navigateByUrl('');
         }
         else {

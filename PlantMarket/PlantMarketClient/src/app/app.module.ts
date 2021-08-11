@@ -34,7 +34,7 @@ import {MatListModule} from '@angular/material/list';
 import { AddNewPlantComponent } from './components/admin-dialogd/add-new-plant/add-new-plant.component';
 import { CategoryService } from './services/category.service';
 import { AddNewCategoryComponent } from './components/admin-dialogd/add-new-category/add-new-category.component';
-//import { OrderService } from './services/order.service';
+import { CheckAuthService } from './services/check-auth.service';
 
 
 
@@ -80,8 +80,7 @@ import { AddNewCategoryComponent } from './components/admin-dialogd/add-new-cate
   providers: [
     PlantService,
     CategoryService,
-    ShopCartService//,
-    //OrderService
+    ShopCartService
   ],
   bootstrap: [AppComponent]
 })
